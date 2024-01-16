@@ -1,9 +1,48 @@
 namespace OOPTest
 {
+    // OOP(은닉성 / 상속성 / 다형성)
     // TextRPG 를 객체로 생성
     // Knight
     // 속성 : hp, attack, pos
     // 기능 : Move, Attack, Die
+
+    class Player // 부모, 기반 클래스, 각 캐릭터의 공통 부분을 묶을 수 있음
+    {
+        static public int counter = 1;
+        public int id;
+        public int hp;
+        public int attack;
+
+        public Player()
+        {
+            Console.WriteLine("Player 생성자 호출!");
+        }
+
+        public Player(int hp)
+        {
+            this.hp = hp;
+            Console.WriteLine("Player hp 생성자 호출!");
+        }
+
+        public void Move()
+        {
+            Console.WriteLine("Player Move");
+        }
+
+        public void Attack()
+        {
+            Console.WriteLine("Player Attack");
+        }
+    }
+
+    class Archer : Player // 자식, 파생 클래스
+    {
+        public Archer() : base(100) // 부모의 특정 상속자로 생성
+        {
+            base.hp = 100; // 필드가 딸려옴
+            Console.WriteLine("Archer 생성자 호출!");
+        }
+    }
 
     //ref 참조
     class Knight
@@ -38,7 +77,7 @@ namespace OOPTest
 
             this.hp = 100;
             this.attack = 10;
-            Console.WriteLine("생성자 호출!");
+            Console.WriteLine("Knight 생성자 호출!");
         }
 
         public Knight(int hp) : this() //<- 클래스 자신의 빈 생성자 상속
@@ -121,6 +160,10 @@ namespace OOPTest
 
             Knight knight4 = Knight.CreateKnight(); // static 함수
             knight4.Move(); // 일반 함수
+
+            Archer archer = new Archer();
+            archer.Move();
+            archer.Attack();
         }
     }
 }
