@@ -38,11 +38,16 @@ namespace OOPTest
 
     class Archer : Player // 자식, 파생 클래스
     {
+        public int mp;
+
         public Archer() : base(100) // 부모의 특정 상속자로 생성
         {
             base.hp = 100; // 필드가 딸려옴
             Console.WriteLine("Archer 생성자 호출!");
         }
+
+        //다형성
+
     }
     //상속성 끝
     
@@ -53,8 +58,6 @@ namespace OOPTest
     // 보안 레벨 설정이 중요하다.
     // setter, getter 함수가 필요한 이유
     // 디버그 했을 때 호출 스택을 사용하여 추적이 가능하기 때문에 사용한다.
-
-    // 다형성
 
     //ref 참조
     class Knight
@@ -176,6 +179,36 @@ namespace OOPTest
             Archer archer = new Archer();
             archer.Move();
             archer.Attack();
+
+            // Archer 타입 -> Player 타입
+            // Player 타입 -> Archer 타입 형변환 필요
+            Player archerPlayer = archer;
+            Archer archer2 = (Archer)archerPlayer;
+
+            EnterGame(archer);
+        }
+
+        //클래스 형식 변환
+        //형변환을 잘못 하면 컴파일에서 잡지 못하고 서비스 중에 발견될수 있기 때문에
+        //굉장히 중요하게 다뤄야 한다.
+        //부모 클래스를 매개변수로 설정하면
+        //자식 클래스를 매개변수로 등록 가능
+        static void EnterGame(Player player)
+        {
+            //매개변수 타입이 무엇인지 확인 bool
+            bool isArcher = (player is Archer);
+            if (isArcher)
+            {
+                Archer archer2 = (Archer)player;
+                archer2.mp = 10;
+            }
+            //객체로 확인
+            Archer? archer = (player as Archer);
+            if (archer != null)
+            {
+                Archer archer2 = (Archer)player;
+                archer2.mp = 10;
+            }
         }
     }
 }
