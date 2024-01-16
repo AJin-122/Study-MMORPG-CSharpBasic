@@ -6,6 +6,7 @@ namespace OOPTest
     // 속성 : hp, attack, pos
     // 기능 : Move, Attack, Die
 
+    //상속성
     class Player // 부모, 기반 클래스, 각 캐릭터의 공통 부분을 묶을 수 있음
     {
         static public int counter = 1;
@@ -43,6 +44,17 @@ namespace OOPTest
             Console.WriteLine("Archer 생성자 호출!");
         }
     }
+    //상속성 끝
+    
+    // 은닉성, 접근 한정자
+    // public private protected 등 설정 해야 한다.
+    // 프로그램이 커지면 여러 사람들이 만들기 때문에
+    // 이름으로 기능을 예측해서 사용하기 때문에
+    // 보안 레벨 설정이 중요하다.
+    // setter, getter 함수가 필요한 이유
+    // 디버그 했을 때 호출 스택을 사용하여 추적이 가능하기 때문에 사용한다.
+
+    // 다형성
 
     //ref 참조
     class Knight
