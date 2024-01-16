@@ -34,6 +34,19 @@ namespace OOPTest
         {
             Console.WriteLine("Player Attack");
         }
+
+        //오버라이딩 하려면 버츄얼로 선언되어야 함
+        // 버츄얼로 선언 하면 성능에 영향을 주기 때문에
+        // 필요한 것만 버츄얼 선언
+        public virtual void Test()
+        {
+            Console.WriteLine("Player Test");
+        }
+
+        public virtual void Test2()
+        {
+            Console.WriteLine("Player Test2");
+        }
     }
 
     class Archer : Player // 자식, 파생 클래스
@@ -46,8 +59,28 @@ namespace OOPTest
             Console.WriteLine("Archer 생성자 호출!");
         }
 
-        //다형성
+        //new 키워드는 단순히 재정의 한것
+        //부모 클래스에서 호출시 부모 클래스가 호출됨
+        public new void Move()
+        {
+            Console.WriteLine("Archer Move");
+        }
 
+        //override 로 정의 해야 다형성에 맞다.
+        //부모 클래스에서 호출 시 자신의 함수가 호출됨
+        public override void Test()
+        {
+            // 부모 클래스 함수를 한번 호출
+            base.Test();
+            Console.WriteLine("Archer Test");
+        }
+
+        public sealed override void Test2()
+        {
+            // 부모 클래스 함수를 한번 호출
+            base.Test2();
+            Console.WriteLine("Archer Test2");
+        }
     }
     //상속성 끝
     
@@ -58,6 +91,21 @@ namespace OOPTest
     // 보안 레벨 설정이 중요하다.
     // setter, getter 함수가 필요한 이유
     // 디버그 했을 때 호출 스택을 사용하여 추적이 가능하기 때문에 사용한다.
+
+    //C#에만 있는 문구 sealed
+    class SuperArcher : Archer
+    {
+        //에러
+        //Archer 의 Test2 가 sealed 로 선언되어
+        //자식 클래스는 더이상 부모 클래스를 오버라이딩 할수 없다.
+/*
+        public override void Test2()
+        {
+            base.Test2();
+        }
+*/
+    }
+
 
     //ref 참조
     class Knight
@@ -195,12 +243,18 @@ namespace OOPTest
         //자식 클래스를 매개변수로 등록 가능
         static void EnterGame(Player player)
         {
+            //new 키워드 이기 때문에 player의 것이 호출
+            player.Move();
+            //오버라이딩 했기 때문에 archer 의 것이 호출
+            player.Test();
+
             //매개변수 타입이 무엇인지 확인 bool
             bool isArcher = (player is Archer);
             if (isArcher)
             {
                 Archer archer2 = (Archer)player;
                 archer2.mp = 10;
+                //archer2.Move();
             }
             //객체로 확인
             Archer? archer = (player as Archer);
@@ -208,6 +262,7 @@ namespace OOPTest
             {
                 Archer archer2 = (Archer)player;
                 archer2.mp = 10;
+                //archer2.Attack();
             }
         }
     }
