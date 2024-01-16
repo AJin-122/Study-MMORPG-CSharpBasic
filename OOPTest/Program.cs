@@ -11,6 +11,26 @@ namespace OOPTest
         public int hp;
         public int attack;
 
+        public Knight()
+        {
+            this.hp = 100;
+            this.attack = 10;
+            Console.WriteLine("생성자 호출!");
+        }
+
+        public Knight(int hp) : this() //<- 클래스 자신의 빈 생성자 상속
+        {
+            this.hp = hp;
+            Console.WriteLine("hp 생성자 호출!");
+        }
+
+        public Knight(int hp, int attack) : this(hp)
+        {
+            this.hp = hp;
+            this.attack = attack;
+            Console.WriteLine("hp attack 생성자 호출!");
+        }
+
         public Knight Clone()
         {
             Knight knight2 = new Knight();
@@ -70,6 +90,8 @@ namespace OOPTest
             //깊은 복사
             Knight Knight2 = knight.Clone();
             Knight2.hp = 0;
+
+            Knight knight3 = new Knight(50);
 
             //knight.Move();
             //knight.Attack();
