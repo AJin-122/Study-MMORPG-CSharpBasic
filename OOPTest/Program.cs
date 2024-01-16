@@ -8,11 +8,34 @@ namespace OOPTest
     //ref 참조
     class Knight
     {
+        static public int counter = 1; //오로지 하나만 존재하는 값
+
+        // 함수의 static 에서는 공용함수이기 때문에 클래스 각각의 인스턴트에 대해선
+        // 참조가 되지 않는다.
+        static public void Test()
+        {
+            //에러
+            //this.id = 1;
+            counter++;
+        }
+
+        static public Knight CreateKnight()
+        {
+            Knight knight = new Knight();
+            knight.hp = 100;
+            knight.attack = 1;
+            return knight;
+        }
+
+        // 필드
+        public int id;
         public int hp;
         public int attack;
 
         public Knight()
         {
+            id = counter++;
+
             this.hp = 100;
             this.attack = 10;
             Console.WriteLine("생성자 호출!");
@@ -95,6 +118,9 @@ namespace OOPTest
 
             //knight.Move();
             //knight.Attack();
+
+            Knight knight4 = Knight.CreateKnight(); // static 함수
+            knight4.Move(); // 일반 함수
         }
     }
 }
