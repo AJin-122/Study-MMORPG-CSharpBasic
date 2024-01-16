@@ -32,25 +32,23 @@ namespace TextRPG
 
         static void Main(string[] args)
         {
-            ClassType choice = ClassType.None;
-
             while (true)
             {
-                choice = ChooseClass();
+                ClassType choice = ChooseClass();
 
-                if(choice != ClassType.None )
-                {
-                    // 캐릭터 생성
-                    Player player;
+                if (choice == ClassType.None) continue;
+                
+                // 캐릭터 생성
+                Player player;
                     
-                    CreatePlayer(choice, out player);
+                CreatePlayer(choice, out player);
 
-                    Console.WriteLine($"HP{player.hp} Attack{player.attack}");
-                    // 기사 (100/10) 궁수 (75/12) 법사(50/15)
+                Console.WriteLine($"HP{player.hp} Attack{player.attack}");
+                // 기사 (100/10) 궁수 (75/12) 법사(50/15)
 
-                    //필드로 나가서 몬스터랑 싸운다.
-                    EnterGame(ref player);
-                }
+                //필드로 나가서 몬스터랑 싸운다.
+                EnterGame(ref player);
+                
             }
         }
 
