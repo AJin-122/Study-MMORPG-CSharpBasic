@@ -1,5 +1,12 @@
 namespace TextRPG
 {
+    /*
+    문제점
+    절차 지향적이라 순서에 종속되어 있다.
+    객체 지향으로 바꾸어야 한다.
+    객체(OOP : Object Oriented Programming)
+     */
+
     internal class Program
     {
         enum ClassType
