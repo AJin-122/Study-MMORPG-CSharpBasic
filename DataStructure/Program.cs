@@ -137,6 +137,7 @@ namespace DataStructure
             MyList list = new MyList();
             */
             ///* 사전
+            MyDictionary dictionary = new MyDictionary();
         }
     }
 }
