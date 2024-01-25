@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringEX", "StringEX\String
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextRPG2", "TextRPG2\TextRPG2.csproj", "{5A37155F-A0BF-496D-AE83-BDF572F4E4EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{203BACD6-3F2B-492D-A82C-228AA4E7BBA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{203BACD6-3F2B-492D-A82C-228AA4E7BBA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "basicgrammar", "basicgrammar\basicgrammar.csproj", "{E156679D-3FF0-48B2-B80F-4FE2FE514C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{203BACD6-3F2B-492D-A82C-228AA4E7BBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{203BACD6-3F2B-492D-A82C-228AA4E7BBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{203BACD6-3F2B-492D-A82C-228AA4E7BBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E156679D-3FF0-48B2-B80F-4FE2FE514C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E156679D-3FF0-48B2-B80F-4FE2FE514C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E156679D-3FF0-48B2-B80F-4FE2FE514C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E156679D-3FF0-48B2-B80F-4FE2FE514C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
