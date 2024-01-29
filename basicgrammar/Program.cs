@@ -57,6 +57,11 @@ namespace basicgrammar
             return null;
         }
 
+        class TestException : Exception
+        {
+
+        }
+
         static void Main(string[] args)
         {
             /* 일반화
@@ -102,6 +107,36 @@ namespace basicgrammar
 
             
              */
+            ///* 예외처리
+            try
+            {
+                // 1. 0으로 나눌 때
+                // 2. 잘못된 메모리를 참조 (null)
+                // 3. 오버플로우 
+                throw new TestException();
+
+                int a = 10;
+                int b = 0;
+                int result = a / b;
+            }
+            //세부화된 예외 사항
+            //if else 와 유사하게 작동 미리 캐치문에서 실행되면 아래 구문은 실행 안함
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine($"{e.Message}");
+            }
+            //Exception 은 모든 예외사항에 해당
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+            //에러가 발생 했을 때도 반드시 실행 되야 되는 구문
+            finally
+            {
+                // 보통 DB, 파일 정리 등등 중요한 부분이 실행 된다.
+                Console.WriteLine("에러 발생");
+            }
+            // */
         }
     }
 }
