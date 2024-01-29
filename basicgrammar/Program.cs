@@ -107,7 +107,7 @@ namespace basicgrammar
 
             
              */
-            ///* 예외처리
+            /* 예외처리
             try
             {
                 // 1. 0으로 나눌 때
@@ -136,6 +136,9 @@ namespace basicgrammar
                 // 보통 DB, 파일 정리 등등 중요한 부분이 실행 된다.
                 Console.WriteLine("에러 발생");
             }
+             */
+            ///* 리플렉션
+            MyReflection myReflection = new MyReflection();
             // */
         }
     }
