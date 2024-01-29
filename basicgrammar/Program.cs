@@ -25,6 +25,38 @@ namespace basicgrammar
             Console.WriteLine("Input Received!");
         }
 
+        // 람다식을 사용하기 위한 사전 문법들
+        static List<Item> _items = new List<Item>();
+
+        delegate bool ItemSelector(Item item);
+        //반환형식이 있고 매개변수가 있으면 MyFunc 으로 넘길수 있음
+        delegate Return MyFunc<T, Return>(T item);
+        delegate Return MyFunc<T1, T2, Return>(T1 item1, T2 item2);
+        // 데리케이트를 직접 선언하지 않아도
+        // Func<>, Action<> 으로 C# 에서 만들어져 있다.
+        // 반환 타입이 있을 경우 Func
+        // 반환 타입이 없을 경우 Action
+
+        static Item FindItem(ItemSelector selector)
+        {
+            foreach (Item item in _items)
+            {
+                if (selector(item)) return item;
+            }
+
+            return null;
+        }
+
+        static Item FindItem(MyFunc<Item, bool> selector)
+        {
+            foreach (Item item in _items)
+            {
+                if (selector(item)) return item;
+            }
+
+            return null;
+        }
+
         static void Main(string[] args)
         {
             /* 일반화
@@ -42,7 +74,7 @@ namespace basicgrammar
             clicked += myDelegate.TestDelegate2;
             clicked();
             */
-            ///* 이벤트
+            /* 이벤트
             InputManager inputManager = new InputManager();
 
             inputManager.InputKey += OnInputTest;
@@ -52,7 +84,24 @@ namespace basicgrammar
                 inputManager.Update();
             }
             
-            // */
+             */
+            /* 람다식
+            _items.Add(new Item() { ItemType = ItemType.Weapon, Rarity = Rarity.Normal });
+            _items.Add(new Item() { ItemType = ItemType.Armor, Rarity = Rarity.Uncommon });
+            _items.Add(new Item() { ItemType = ItemType.Ring, Rarity = Rarity.Rare });
+
+            ItemSelector itemSelector = delegate (Item item) { return item.ItemType == ItemType.Weapon; };
+            MyFunc<Item, bool> selector = (Item item) => { return item.ItemType == ItemType.Weapon; };
+
+            // 재사용 하지 않을 함수인 경우 델리게이트로 선언하여 한번 사용한다.
+            // 아래 방식은 Anonymous Function : 무명 함수 / 익명 함수
+            Item item = FindItem(itemSelector);
+
+            // 람다식 입력 => 출력 으로 구성
+            Item item2 = FindItem(selector);
+
+            
+             */
         }
     }
 }
