@@ -1,3 +1,5 @@
+using CSharpBasic;
+
 namespace basicgrammar
 {
     internal class Program
@@ -20,11 +22,21 @@ namespace basicgrammar
 
         static void Main(string[] args)
         {
-            ///* 일반화
+            /* 일반화
             MyList<int> myIntList = new MyList<int>();
             int item = myIntList.GetItem(0);
             MyList<short> myShortList = new MyList<short>();
-             //*/
+            */
+            ///* 대리자
+            MyDelegate myDelegate = new MyDelegate();
+            myDelegate.ButtonPressed(myDelegate.TestDelegate);
+
+            //올바른 구현 방법
+            //여러 함수를 연달아서 실행 하게 끔 할 수 있다.
+            MyDelegate.OnClicked clicked = new MyDelegate.OnClicked(myDelegate.TestDelegate);
+            clicked += myDelegate.TestDelegate2;
+            clicked();
+            // */
         }
     }
 }
