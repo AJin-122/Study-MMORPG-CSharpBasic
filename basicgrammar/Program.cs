@@ -137,8 +137,11 @@ namespace basicgrammar
                 Console.WriteLine("에러 발생");
             }
              */
-            ///* 리플렉션
+            /* 리플렉션
             MyReflection myReflection = new MyReflection();
+             */
+            ///* 널러블
+            MyNullable myNullable = new MyNullable();
             // */
         }
     }
